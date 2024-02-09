@@ -1,8 +1,24 @@
  export class Animal {
+     /**
+     * Representa o nome do animal.
+     */
+     /**
+      * Representa a idade do animal.
+      */
+     /**
+      * Representa o gênero do animal.
+      */
     private nome: string;
     private idade: number;
     private genero: string;
 
+     /**
+    * Construtor da classe Animal.
+    * 
+    * @param _nome O nome do animal.
+    * @param _idade A idade do animal.
+    * @param _genero O gênero do animal.
+    */
     constructor(_nome: string,
                 _idade: number,
                 _genero: string) {

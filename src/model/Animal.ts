@@ -34,7 +34,7 @@
      * 
      * @returns nome : nome da pessoa
      */
-    public getNome(nome: string) {
+    public getNome() {
         return this.nome;
     }
 /**

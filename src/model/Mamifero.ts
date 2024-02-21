@@ -20,22 +20,22 @@ export class Mamifero extends Animal{
                 super(_nome, _idade, _genero);
         this.raca = _raca;
     }
-
-    /**
+/**
      * Retorna a raça do animal
      * 
-     * @returns raça: raça do animal
+     * @returns raça : raça do animal
      */
-    public getNome(raca: string) {
-        return this.raca;
-    }
+public getRaca(): string {
+    return this.raca;
+}
 
-    /**
-     * Atribui o parametro ao atributo raça
-     * @param _raca : raça do animal
-     */
-    public setNome(_raca: string): void{
-        this.raca = _raca;
-    }
+/**
+ * Atribui o parâmetro ao atributo raça
+ * 
+ * @param _raca : raça do animal
+ */
+public setRaca(_raca: string): void {
+    this.raca = _raca;
+}
 
 }

@@ -1,82 +1,89 @@
- export class Animal {
+ /**
+ * Representa um animal no zoológico.
+ */
+export class Animal {
+
     /**
-     * Representa o nome do animal.
+     * O nome do animal.
      */
     private nome: string;
-     
-    /**
-    * Representa a idade do animal.
-    */
-  private idade: number;
-   
-    /**
-    * Representa o gênero do animal.
-    */
-  private genero: string;
 
+    /**
+     * A idade do animal.
+     */
+    private idade: number;
 
-     /**
-    * Construtor da classe Animal.
-    * 
-    * @param _nome O nome do animal.
-    * @param _idade A idade do animal.
-    * @param _genero O gênero do animal.
-    */
+    /**
+     * O gênero do animal (ex: "macho", "fêmea", "desconhecido").
+     */
+    private genero: string;
+
+    /**
+     * Cria uma nova instância de Animal.
+     * 
+     * @param _nome O nome do animal.
+     * @param _idade A idade do animal.
+     * @param _genero O gênero do animal.
+     */
     constructor(_nome: string,
                 _idade: number,
                 _genero: string) {
         this.nome = _nome;
         this.idade = _idade;
         this.genero = _genero;
-    } 
-/**
-     * Retorna o nome da pessoa
+    }
+
+    /**
+     * Obtém o nome do animal.
      * 
-     * @returns nome : nome da pessoa
+     * @returns O nome do animal.
      */
-    public getNome() {
+    public getNome(): string {
         return this.nome;
     }
-/**
-     * Atribui o parâmetro ao atributo nome
+
+    /**
+     * Define o nome do animal.
      * 
-     * @param _nome : nome da pessoa
+     * @param nome O nome a ser atribuído ao animal.
      */
-    public setNome(_nome: string): void{
-        this.nome = _nome;
+    public setNome(nome: string): void {
+        this.nome = nome;
     }
- /**
-     * Retorna a idade da pessoa
+
+    /**
+     * Obtém a idade do animal.
      * 
-     * @returns idade : idade da pessoa
+     * @returns A idade do animal.
      */
     public getIdade(): number {
         return this.idade;
     }
- /**
-     * Atribui o parâmetro ao atributo idade
+
+    /**
+     * Define a idade do animal.
      * 
-     * @param _idade : idade da pessoa
+     * @param idade A idade a ser atribuída ao animal.
      */
-    public setIdade(_idade: number): void {
-        this.idade = _idade;
+    public setIdade(idade: number): void {
+        this.idade = idade;
     }
-/**
-     * Retorna o gênero da pessoa
+
+    /**
+     * Obtém o gênero do animal.
      * 
-     * @returns genero : gênero da pessoa
+     * @returns O gênero do animal.
      */
     public getGenero(): string {
         return this.genero;
     }
-  /**
-     * Atribui o parâmetro ao atributo genero
+
+    /**
+     * Define o gênero do animal.
      * 
-     * @param _genero : gênero da pessoa
+     * @param genero O gênero a ser atribuído ao animal.
      */
-    public setGenero(_genero: string): void{
-        this.genero = _genero;
+    public setGenero(genero: string): void {
+        this.genero = genero;
     }
-
-
 }

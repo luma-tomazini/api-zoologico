@@ -1,55 +1,73 @@
 import { Habitat } from "./Habitat";
-export class Atracao {
-     /**
-     * Representa o nome da atração.
-     */
-     /**
-      * Representa a lista de habitats associados à atração.
-      */
-    private nome: string;
-    private listaHabitats: Array <Habitat>;
 
-    /**
-    * Construtor da classe Atracao.
-    * 
-    * @param _nome O nome da atração.
-    * @param _lista_de_habitats A lista de habitats associada à atração.
-    */
-    constructor(_nome: string,
-                _listaHabitats: Array<Habitat>,){
-        this.nome = _nome;
-        this.listaHabitats = _listaHabitats
-    }
-    /**
-     * Retorna o nome da atracao
-     * 
-     * @returns nome : o nome da atracao
-     */
-    public getNome(nome: string) {
-        return this.nome;
-    }
 /**
- * Define o nome da atracao
- * @param _nome o nome a ser atribuido á atracao
+ * Representa uma atração em um zoológico.
  */
-    public setNome(_nome: string): void{
-        this.nome = _nome;
+export class Atracao {
+
+    /**
+     * O nome da atração.
+     */
+    private nomeAtracao: string;
+
+    /**
+     * A lista de habitats presentes na atração.
+     */
+    private listaHabitats: Array<Habitat>;
+
+    /**
+     * Cria uma nova instância de Atracao.
+     * 
+     * @param _nome O nome da atração.
+     * @param _habitats A lista de habitats presentes na atração.
+     */
+    constructor(_nome: string, _habitats: Array<Habitat>) {
+        this.nomeAtracao = _nome;
+        this.listaHabitats = _habitats;
     }
 
     /**
-     * Retorna a lista de habitats associada á atracao
-     *  
-     * @returns a lista de habitats da atracao 
+     * Obtém o nome da atração.
+     * 
+     * @returns O nome da atração.
      */
-    public getListaHabitats(listaHabitats: Array<Habitat>) {
-        return this.listaHabitats = listaHabitats;
+    public getNomeAtracao(): string {
+        return this.nomeAtracao;
     }
 
     /**
-     * Define a lista de habitats associada á atracao
-     * @param _listaHabitats a lista de habitats ser atribuída a atracao
+     * Define o nome da atração.
+     * 
+     * @param _nomeAtracao O nome a ser atribuído à atração.
      */
-    public setListaHabitats(_listaHabitats: Array<Habitat>): void{
-        this.listaHabitats = _listaHabitats;
+    public setNomeAtracao(_nomeAtracao: string): void {
+        this.nomeAtracao = _nomeAtracao;
+    }
+
+    /**
+     * Obtém a lista de habitats presentes na atração.
+     * 
+     * @returns A lista de habitats da atração.
+     */
+    public getHabitats(): Array<Habitat> {
+        return this.listaHabitats;
+    }
+
+    /**
+     * Define a lista de habitats da atração.
+     * 
+     * @param _habitats A lista de habitats a ser atribuída à atração.
+     */
+    public setHabitats(_habitats: Array<Habitat>): void {
+        this.listaHabitats = _habitats;
+    }
+
+    /**
+     * Adiciona um habitat à lista de habitats da atração.
+     * 
+     * @param _habitat O habitat a ser adicionado à atração.
+     */
+    public adicionarHabitat(_habitat: Habitat): void {
+        this.listaHabitats.push(_habitat);
     }
 }

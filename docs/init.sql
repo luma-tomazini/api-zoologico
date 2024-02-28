@@ -1,44 +1,93 @@
-CREATE TABLE reptil (id SERIAL NOT NULL PRIMARY KEY,
-					 nome VARCHAR(50) NOT NULL, 
-					 idade INT, 
-					 genero VARCHAR(3) NOT NULL, 
-					 tipos_de_escamas VARCHAR(10));
+------------------------------------------------------------------------------------
+------------- CRIANDO TABELAS
+------------------------------------------------------------------------------------ 
+CREATE TABLE Animal (idAnimal SERIAL NOT NULL PRIMARY KEY,
+					nomeAnimal VARCHAR(50) NOT NULL,
+					idadeAnimal INT,
+					generoAnimal VARCHAR(15) NOT NULL);
+					
+CREATE TABLE Ave (idAve INT,
+				 envergadura FLOAT NOT NULL,
+				 FOREIGN KEY (idAve) REFERENCES Animal(idAnimal));
+				 
+CREATE TABLE Mamifero (idMamifero INT,
+				 especie VARCHAR(50) NOT NULL,
+				 FOREIGN KEY (idMamifero) REFERENCES Animal(idAnimal));
+				 
+CREATE TABLE Reptil (idReptil INT,
+				 tipoDeEscamas VARCHAR(50) NOT NULL,
+				 FOREIGN KEY (idReptil) REFERENCES Animal(idAnimal));
+				 
+CREATE TABLE Habitat (idHabitat SERIAL NOT NULL PRIMARY KEY,
+					 nomeHabitat VARCHAR(50) NOT NULL);
 					 
-CREATE TABLE ave (id SERIAL NOT NULL PRIMARY KEY,
-					 nome VARCHAR(50) NOT NULL, 
-					 idade INT, 
-					 genero VARCHAR(3) NOT NULL, 
-					 envergadura FLOAT);
+CREATE TABLE Atracao (idAtracao SERIAL NOT NULL PRIMARY KEY,
+					 nomeAtracao VARCHAR(50) NOT NULL,
+					 idHabitat INT,
+					 FOREIGN KEY (idHabitat) REFERENCES Habitat(idHabitat));
 					 
-CREATE TABLE mamifero (id SERIAL NOT NULL PRIMARY KEY,
-					 nome VARCHAR(50) NOT NULL, 
-					 idade INT, 
-					 genero VARCHAR(12) NOT NULL, 
-					 raca VARCHAR(30));
-					 
-INSERT INTO mamifero (nome, idade, genero, raca)
-	VALUEs
-('Simba', 2, 'Macho', 'Leão'), 
-('Nala', 2, 'Femea', 'Leoa'),
-('Pumba', 10, 'Macho', 'Javali'),
-('Timao', 1, 'Macho', 'Suricato');
+CREATE TABLE Animal_Habitat(idAnimalHabitat SERIAL NOT NULL PRIMARY KEY,
+						   idAnimal INT,
+						   idHabitat INT,
+						   FOREIGN KEY (idAnimal) REFERENCES Animal(idAnimal),
+						   FOREIGN KEY (idHabitat) REFERENCES Habitat(idHabitat));
 
-INSERT INTO ave (nome, idade, genero, envergadura)
+------------------------------------------------------------------------------------
+------------- POPULANDO TABELAS (INSERT)
+------------------------------------------------------------------------------------
+INSERT INTO Animal(nomeAnimal, idadeAnimal, generoAnimal)
 	VALUES
-('Zuzu', 3, 'Femea', 20),
-('Iago', 5, 'Macho', 30),
-('Scuttle', 2, 'Macho', 40);
-
-INSERT INTO reptil (nome, idade, genero, tipo_de_escamas)
+	('SIMBA', 7, 'MACHO'),			-- id 1
+	('PUMBA', 4, 'MACHO'),			-- id 2
+	('NALA', 6, 'FÊMEA'),			-- id 3
+	('ZAZU', 1, 'MACHO'),			-- id 4
+	('IAGO', 2, 'MACHO'),			-- id 5
+	('SCUTTLE', 4, 'FÊMEA'),		-- id 6
+	('KAA', 1, 'MACHO'),			-- id 7
+	('LOUIS', 5, 'MACHO'),			-- id 8
+	('TICK-TOCK', 3, 'FÊMEA');		-- id 9
+	
+INSERT INTO Mamifero(idMamifero, especie)
 	VALUES
-('Pascal', 4, 'macho', 'Dermicas'),
-('Crush', 50, 'Macho', 'Escudos'),
-('Kaa', 8, 'Femea', 'Escamas quiliferas');
+	(1, 'FELINO'),
+	(2, 'JAVALI'),
+	(3, 'FELINO');
 
---ALTER TABLE reptil
---ALTER COLUMN tipo_de_escamas TYPE VARCHAR(50);
+INSERT INTO Ave(idAve, envergadura)
+	VALUES
+	(4, 0.55),
+	(5, 0.98),
+	(6, 0.35);
 
---SELECT * FROM mamifero;
---SELECT * FROM ave;
---SELECT * FROM reptil;
-
+INSERT INTO Reptil(idReptil, tipoDeEscamas)
+	VALUES
+	(7, 'ESCUDOS'),
+	(8, 'ESCAMAS CEFÁLICAS'),
+	(9, 'ESCAMAS TIMPANOAURICULARES');
+	
+INSERT INTO Habitat(nomeHabitat)
+	VALUES
+	('PLANÍCIE'),	-- id 1
+	('FLORESTA'),	-- id 2
+	('PÂNTANO'),	-- id 3
+	('MONTANHA'),	-- id 4
+	('ILHA');		-- id 5
+	
+INSERT INTO Animal_Habitat(idAnimal, idHabitat)
+	VALUES
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 2),
+	(6, 2),
+	(7, 2),
+	(8, 3),
+	(9, 3);
+	
+INSERT INTO Atracao(nomeAtracao, idHabitat)
+	VALUES
+	('PASSEIO DE JEEP', 1),		-- id 1
+	('ALIMENTAR OS LEÕES', 1),	-- id 2
+	('PENTEAR MACACO', 2),		-- id 3
+	('CORRER DAS COBRAS', 3);	-- id 4
